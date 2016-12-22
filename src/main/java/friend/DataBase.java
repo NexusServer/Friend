@@ -18,7 +18,14 @@ public class DataBase {
 	}
 
 	public void initDB() {
-		FriendDB = (LinkedHashMap<String, Object>) new Config(new File(plugin.getDataFolder(), "Friend.json"),Config.JSON).getAll();
+		FriendDB = (LinkedHashMap<String, Object>) new Config(new File(plugin.getDataFolder(), "Friend.json"),
+				Config.JSON).getAll();
 
+	}
+
+	public void save() {
+		Config FriendDB = new Config(new File(plugin.getDataFolder(), "Friend.json"), Config.JSON);
+		FriendDB.setAll(this.FriendDB);
+		FriendDB.save();
 	}
 }
