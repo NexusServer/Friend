@@ -23,4 +23,7 @@ public class Main extends PluginBase implements Listener {
 	public void onDisable() {
 		this.dataBase.save();
 	}
+	public DataBase getDataBase(){
+		return this.dataBase;
+	} 
 }

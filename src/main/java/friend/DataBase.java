@@ -36,6 +36,10 @@ public class DataBase {
 		FriendDB.save();
 	}
 	
+	public void registerCommands(){
+		
+	}
+	
 	public void registerCommand(String name, String description, String usage, String permission) {
 		SimpleCommandMap commandMap = this.plugin.getServer().getCommandMap();
 		PluginCommand<Main> command = new PluginCommand<Main>(name, plugin);
