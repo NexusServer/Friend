@@ -13,7 +13,7 @@ public class Main extends PluginBase implements Listener {
 		this.getLogger().info("[Loading] Plugin Loading...");
 		this.getServer().getPluginManager().registerEvents(this, this);
 		this.getLogger().info("[Loading] EventHandler... success!");
-		Config data = new Config(new File(this.getDataFolder(), "friend.json"), Config.JSON);
+		
 		this.getLogger().info("[Loading] Plugin Data Loading...");
 	}
 
