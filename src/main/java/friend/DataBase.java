@@ -34,14 +34,18 @@ public class DataBase {
 	}
 
 	@SuppressWarnings("unchecked")
+	public Map<String, Object> get(String player) {
+		return ((Map<String, Object>) this.FriendDB.get(player.toLowerCase()));
+	}
+
+	@SuppressWarnings("unchecked")
 	public ArrayList<Player> getFriend(String player) {
 		ArrayList<Player> friend = new ArrayList<>();
 
-		for (String str : (List<String>) ((Map<String, Object>) this.FriendDB.get(player.toLowerCase())).get("friends")) {
+		for (String str : (List<String>) this.get(player).get("friends")) {
 			friend.add(plugin.getServer().getPlayer(str));
 		}
-
 		return friend;
-
 	}
+	
 }
