@@ -12,7 +12,7 @@ public class Main extends PluginBase implements Listener {
 	@Override
 	public void onEnable() {
 		this.getLogger().info("[Loading] Plugin Loading...");
-		this.getServer().getPluginManager().registerEvents(this, this);
+		this.getServer().getPluginManager().registerEvents(new EventListener(this), this);
 		this.getLogger().info("[Loading] Plugin Data Loading...");
 		this.dataBase = new DataBase(this);
 		this.manage = new Manage(this);

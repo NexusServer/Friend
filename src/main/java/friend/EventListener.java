@@ -1,8 +1,9 @@
 package friend;
 
+import cn.nukkit.command.Command;
+import cn.nukkit.command.CommandSender;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
-import cn.nukkit.event.player.PlayerChatEvent;
 import cn.nukkit.event.player.PlayerJoinEvent;
 import friend.manage.Manage;
 
@@ -36,4 +37,33 @@ public class EventListener implements Listener {
 		}
 	}
 
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
+		if (!command.getName().equals("친구")) {
+			return true;
+		}
+
+		if (args.length <= 0) {
+			
+		}
+
+		switch (args[0]) {
+		case "request":
+		case "신청":
+
+			break;
+		case "del":
+		case "삭제":
+			break;
+
+		case "list":
+		case "목록":
+			break;
+
+		}
+
+		return false;
+
+	}
+ String getM
 }
