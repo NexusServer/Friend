@@ -8,7 +8,7 @@ public class Request {
 	private Main plugin;
 
 	public Request(Main plugin) {
-
+		this.plugin = plugin;
 	}
 
 	public DataBase getDataBase() {
