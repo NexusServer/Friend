@@ -21,10 +21,9 @@ public class Friend {
 	public Manage getManage() {
 		return plugin.getManage();
 	}
-public List<String>  
-	public boolean isFriend(String p1, String p2) {
-		
 
+	public boolean isFriend(String p1, String p2) {
 		return true;
 	}
+
 }
