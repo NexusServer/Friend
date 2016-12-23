@@ -15,7 +15,7 @@ public class Main extends PluginBase implements Listener {
 		this.getLogger().info("[Loading] Plugin Loading...");
 		this.getServer().getPluginManager().registerEvents(this, this);
 		this.getLogger().info("[Loading] Plugin Data Loading...");
-		dataBase = new DataBase(this);
+		this.dataBase = new DataBase(this);
 		
 	}
 
