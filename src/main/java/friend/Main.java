@@ -2,7 +2,6 @@ package friend;
 
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
-
 import friend.manage.Manage;
 
 public class Main extends PluginBase implements Listener {

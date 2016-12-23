@@ -1,13 +1,8 @@
 package friend;
 
 import java.io.File;
-
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
-import cn.nukkit.Player;
 import cn.nukkit.command.PluginCommand;
 import cn.nukkit.command.SimpleCommandMap;
 import cn.nukkit.utils.Config;
@@ -54,7 +49,7 @@ public class DataBase {
 		command.setPermission(permission);
 		commandMap.register(name, command);
 	}
-	
+
 	/*
 	 * @SuppressWarnings("unchecked") public Map<String, Object> get(String
 	 * player) { return ((Map<String, Object>)

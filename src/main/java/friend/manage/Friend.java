@@ -24,12 +24,33 @@ public class Friend {
 		return plugin.getManage();
 	}
 
+	public void unFriend(String player, String target) {
+		getFriends(player).remove(target);
+		getFriends(target).remove(player);
+	}
+
 	public List<String> getFriends(String player) {
-		return (ArrayList<String>) this.getDataBase().FriendDB.get(player);
+		return (ArrayList<String>) this.getDataBase().FriendDB.get(player.toLowerCase());
+	}
+
+	public List<String> getFriends(Player player) {
+		return this.getFriends(player.getName().toLowerCase());
 	}
 
 	public boolean isFriend(String p1, String p2) {
-		return true;
+		return this.getFriends(p1.toLowerCase()).contains(p2.toLowerCase());
+	}
+
+	public boolean isFriend(Player p1, Player p2) {
+		return this.isFriend(p1.getName().toLowerCase(), p2.getName().toLowerCase());
+	}
+
+	public boolean isFriend(String p1, Player p2) {
+		return this.isFriend(p1.toLowerCase(), p2.getName().toLowerCase());
+	}
+
+	public boolean isFriend(Player p1, String p2) {
+		return this.isFriend(p1.getName().toLowerCase(), p2.toLowerCase());
 	}
 
 }
