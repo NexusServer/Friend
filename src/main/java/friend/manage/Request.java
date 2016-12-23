@@ -19,5 +19,5 @@ public class Request {
 		return plugin.getManage();
 	}
 	
-
+	
 }

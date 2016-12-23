@@ -1,5 +1,7 @@
 package friend.manage;
 
+import java.util.List;
+
 import friend.DataBase;
 import friend.Main;
 
@@ -19,7 +21,10 @@ public class Friend {
 	public Manage getManage() {
 		return plugin.getManage();
 	}
-	public boolean isFriend(String p1, String p2){
+public List<String>  
+	public boolean isFriend(String p1, String p2) {
+		
+
 		return true;
 	}
 }

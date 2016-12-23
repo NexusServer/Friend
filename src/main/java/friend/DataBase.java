@@ -54,7 +54,7 @@ public class DataBase {
 		command.setPermission(permission);
 		commandMap.register(name, command);
 	}
-
+	
 	/*
 	 * @SuppressWarnings("unchecked") public Map<String, Object> get(String
 	 * player) { return ((Map<String, Object>)
