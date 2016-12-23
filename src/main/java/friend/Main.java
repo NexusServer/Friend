@@ -16,14 +16,15 @@ public class Main extends PluginBase implements Listener {
 		this.getServer().getPluginManager().registerEvents(this, this);
 		this.getLogger().info("[Loading] Plugin Data Loading...");
 		this.dataBase = new DataBase(this);
-		
+
 	}
 
 	@Override
 	public void onDisable() {
 		this.dataBase.save();
 	}
-	public DataBase getDataBase(){
+
+	public DataBase getDataBase() {
 		return this.dataBase;
-	} 
+	}
 }
