@@ -5,18 +5,20 @@ import java.io.File;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
+import friend.manage.Manage;
 
 public class Main extends PluginBase implements Listener {
 
-	DataBase dataBase;
-
+	private DataBase dataBase;
+	private Manage manage;
+	
 	@Override
 	public void onEnable() {
 		this.getLogger().info("[Loading] Plugin Loading...");
 		this.getServer().getPluginManager().registerEvents(this, this);
 		this.getLogger().info("[Loading] Plugin Data Loading...");
 		this.dataBase = new DataBase(this);
-
+		this.manage = new Manage(this);
 	}
 
 	@Override
@@ -26,5 +28,9 @@ public class Main extends PluginBase implements Listener {
 
 	public DataBase getDataBase() {
 		return this.dataBase;
+	}
+	
+	public Manage getManage(){
+		return this.manage;
 	}
 }
