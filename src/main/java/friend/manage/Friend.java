@@ -27,15 +27,28 @@ public class Friend {
 		return plugin.getManage();
 	}
 
-	public void unFriend(String player, String target) {
+	public boolean isFirst(Player player) {
+		return !getDataBase().FriendDB.containsKey(player);
+	}
+
+	public void delFriend(String player, String target) {
 		getFriends(player).remove(target);
 		getFriends(target).remove(player);
 	}
 
 	public void onJoin(Player player) {
-		EntityMetadata data = player.getDataProperties();
-		data.putString(Entity.DATA_NAMETAG, TextFormat.GREEN + player.getName());
-		player.sendData((Player[]) getFriends(player).toArray(), player.getDataProperties());
+
+		player.sendData((Player[]) getFriends(player).toArray(),
+				player.getDataProperties().putString(Entity.DATA_NAMETAG, TextFormat.GREEN + player.getName()));
+		try {
+			plugin.getServer().getOnlinePlayers().values().stream().filter(p -> getFriends(player).contains(p))
+					.forEach((Player p) -> {
+						p.sendData(player, player.getDataProperties().putString(Entity.DATA_NAMETAG,
+								TextFormat.GREEN + player.getName()));
+					});
+		} catch (Exception e) {
+			return;
+		}
 	}
 
 	public List<String> getFriends(String player) {
@@ -44,6 +57,10 @@ public class Friend {
 
 	public List<String> getFriends(Player player) {
 		return this.getFriends(player.getName().toLowerCase());
+	}
+
+	public void addFriend(Player player, Player target) {
+
 	}
 
 	public boolean isFriend(String p1, String p2) {

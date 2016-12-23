@@ -1,5 +1,6 @@
 package friend.manage;
 
+import cn.nukkit.Player;
 import friend.DataBase;
 import friend.Main;
 
@@ -21,6 +22,14 @@ public class Manage {
 
 	public DataBase getBataBase() {
 		return this.plugin.getDataBase();
+	}
+
+	public void onJoin(Player player) {
+		this.friend.onJoin(player);
+	}
+
+	public boolean isFirst(Player player) {
+		return this.friend.isFirst(player);
 	}
 
 }
