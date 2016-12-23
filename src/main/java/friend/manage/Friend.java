@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.nukkit.Player;
+import cn.nukkit.entity.Entity;
+import cn.nukkit.entity.data.EntityMetadata;
+import cn.nukkit.utils.TextFormat;
 import friend.DataBase;
 import friend.Main;
 
@@ -29,6 +32,12 @@ public class Friend {
 		getFriends(target).remove(player);
 	}
 
+	public void onJoin(Player player) {
+		EntityMetadata data = player.getDataProperties();
+		data.putString(Entity.DATA_NAMETAG, TextFormat.GREEN + player.getName());
+		player.sendData((Player[]) getFriends(player).toArray(), player.getDataProperties());
+	}
+
 	public List<String> getFriends(String player) {
 		return (ArrayList<String>) this.getDataBase().FriendDB.get(player.toLowerCase());
 	}
@@ -43,14 +52,6 @@ public class Friend {
 
 	public boolean isFriend(Player p1, Player p2) {
 		return this.isFriend(p1.getName().toLowerCase(), p2.getName().toLowerCase());
-	}
-
-	public boolean isFriend(String p1, Player p2) {
-		return this.isFriend(p1.toLowerCase(), p2.getName().toLowerCase());
-	}
-
-	public boolean isFriend(Player p1, String p2) {
-		return this.isFriend(p1.getName().toLowerCase(), p2.toLowerCase());
 	}
 
 }
