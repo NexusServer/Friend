@@ -1,17 +1,15 @@
 package friend;
 
-import java.io.File;
-
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
-import cn.nukkit.utils.Config;
+
 import friend.manage.Manage;
 
 public class Main extends PluginBase implements Listener {
 
 	private DataBase dataBase;
 	private Manage manage;
-	
+
 	@Override
 	public void onEnable() {
 		this.getLogger().info("[Loading] Plugin Loading...");
@@ -29,8 +27,9 @@ public class Main extends PluginBase implements Listener {
 	public DataBase getDataBase() {
 		return this.dataBase;
 	}
-	
-	public Manage getManage(){
+
+	public Manage getManage() {
 		return this.manage;
 	}
+
 }

@@ -1,6 +1,7 @@
 package friend;
 
 import java.io.File;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,13 +10,13 @@ import java.util.Map;
 import cn.nukkit.Player;
 import cn.nukkit.command.PluginCommand;
 import cn.nukkit.command.SimpleCommandMap;
-import cn.nukkit.plugin.Plugin;
 import cn.nukkit.utils.Config;
 
 public class DataBase {
 
-	private Main plugin;
-	private LinkedHashMap<String, Object> FriendDB;
+	public Main plugin;
+	public LinkedHashMap<String, Object> FriendDB;
+	public LinkedHashMap<String, Object> RequestDB;
 
 	public DataBase(Main plugin) {
 		this.plugin = plugin;
@@ -27,6 +28,8 @@ public class DataBase {
 	public void initDB() {
 		FriendDB = (LinkedHashMap<String, Object>) new Config(new File(plugin.getDataFolder(), "Friend.json"),
 				Config.JSON).getAll();
+		RequestDB = (LinkedHashMap<String, Object>) new Config(new File(plugin.getDataFolder(), "Request.json"),
+				Config.JSON).getAll();
 
 	}
 
@@ -34,12 +37,15 @@ public class DataBase {
 		Config FriendDB = new Config(new File(plugin.getDataFolder(), "Friend.json"), Config.JSON);
 		FriendDB.setAll(this.FriendDB);
 		FriendDB.save();
+		Config RequestDB = new Config(new File(plugin.getDataFolder(), "Request.json"), Config.JSON);
+		RequestDB.setAll(this.RequestDB);
+		RequestDB.save();
 	}
-	
-	public void registerCommands(){
-		
+
+	public void registerCommands() {
+
 	}
-	
+
 	public void registerCommand(String name, String description, String usage, String permission) {
 		SimpleCommandMap commandMap = this.plugin.getServer().getCommandMap();
 		PluginCommand<Main> command = new PluginCommand<Main>(name, plugin);
@@ -48,32 +54,24 @@ public class DataBase {
 		command.setPermission(permission);
 		commandMap.register(name, command);
 	}
-	
-	
-	
-	
 
-	@SuppressWarnings("unchecked")
-	public Map<String, Object> get(String player) {
-		return ((Map<String, Object>) this.FriendDB.get(player.toLowerCase()));
-	}
-
-	public Map<String, Object> get(Player player) {
-		return this.get(player.getName());
-	}
-
-	@SuppressWarnings("unchecked")
-	public ArrayList<Player> getFriend(String player) {
-		ArrayList<Player> friend = new ArrayList<>();
-
-		for (String str : (List<String>) this.get(player.toLowerCase()).get("friends")) {
-			friend.add(plugin.getServer().getPlayer(str));
-		}
-		return friend;
-	}
-
-	public ArrayList<Player> getFriend(Player player) {
-		return this.getFriend(player.getName().toLowerCase());
-	}
+	/*
+	 * @SuppressWarnings("unchecked") public Map<String, Object> get(String
+	 * player) { return ((Map<String, Object>)
+	 * this.FriendDB.get(player.toLowerCase())); }
+	 * 
+	 * public Map<String, Object> get(Player player) { return
+	 * this.get(player.getName()); }
+	 * 
+	 * @SuppressWarnings("unchecked") public ArrayList<Player> getFriend(String
+	 * player) { ArrayList<Player> friend = new ArrayList<>();
+	 * 
+	 * for (String str : (List<String>)
+	 * this.get(player.toLowerCase()).get("friends")) {
+	 * friend.add(plugin.getServer().getPlayer(str)); } return friend; }
+	 * 
+	 * public ArrayList<Player> getFriend(Player player) { return
+	 * this.getFriend(player.getName().toLowerCase()); }
+	 */
 
 }

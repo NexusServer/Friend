@@ -1,5 +1,6 @@
 package friend.manage;
 
+import friend.DataBase;
 import friend.Main;
 
 public class Manage {
@@ -16,6 +17,10 @@ public class Manage {
 	public Request getRequest() {
 
 		return this.request;
+	}
+
+	public DataBase getBataBase() {
+		return this.plugin.getDataBase();
 	}
 
 }
