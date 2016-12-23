@@ -60,7 +60,13 @@ public class Friend {
 	}
 
 	public void addFriend(Player player, Player target) {
+		List<String> list = getFriends(player);
+		list.add(target.getName().toLowerCase());
+		getDataBase().FriendDB.put(player.getName().toLowerCase(), list);
 
+		List<String> list1 = getFriends(target);
+		list.add(player.getName().toLowerCase());
+		getDataBase().FriendDB.put(target.getName().toLowerCase(), list1);
 	}
 
 	public boolean isFriend(String p1, String p2) {

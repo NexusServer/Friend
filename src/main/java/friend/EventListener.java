@@ -2,6 +2,7 @@ package friend;
 
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
+import cn.nukkit.event.player.PlayerChatEvent;
 import cn.nukkit.event.player.PlayerJoinEvent;
 import friend.manage.Manage;
 
@@ -34,6 +35,5 @@ public class EventListener implements Listener {
 			getManage().onJoin(event.getPlayer());
 		}
 	}
-	
-	
+
 }
