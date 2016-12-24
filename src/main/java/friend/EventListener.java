@@ -44,26 +44,31 @@ public class EventListener implements Listener {
 		}
 
 		if (args.length <= 0) {
-
+			sender.sendMessage(this.getMaunal());
+			return true;
 		}
 
 		switch (args[0]) {
 		case "request":
 		case "신청":
-
+			
 			break;
 		case "del":
 		case "삭제":
-			if (getManage().isFriend(sender.getName(), args[1])) {
-				getManage()
-			}
-			break;
 
+			if (getManage().isFriend(sender.getName(), args[1])) {
+				getManage().delFriend(sender.getName(), args[1]);
+				return true;
+			}
+
+			break;
 		case "list":
 		case "목록":
+
 			break;
 		case "help":
 		case "도움말":
+			sender.sendMessage(this.getMaunal());
 			break;
 		}
 
