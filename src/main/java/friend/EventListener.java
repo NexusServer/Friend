@@ -44,7 +44,7 @@ public class EventListener implements Listener {
 		}
 
 		if (args.length <= 0) {
-			
+
 		}
 
 		switch (args[0]) {
@@ -65,5 +65,11 @@ public class EventListener implements Listener {
 		return false;
 
 	}
- String getM
+
+	private String getMaunal() {
+		String str = "";
+		str = str + "";
+
+		return str;
+	}
 }
