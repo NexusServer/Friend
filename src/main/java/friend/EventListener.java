@@ -52,14 +52,13 @@ public class EventListener implements Listener {
 		switch (args[0]) {
 		case "request":
 		case "신청":
-
+			
 			break;
 		case "del":
 		case "삭제":
-			if (args[1].equals("") || args[1] == null) {
+			if (args.length < 1 || args[1] == null) {
 				sender.sendMessage(this.getMaunal());
 				return true;
-
 			}
 			if (getManage().isFriend(sender.getName(), args[1])) {
 				getManage().delFriend(sender.getName(), args[1]);
@@ -71,7 +70,7 @@ public class EventListener implements Listener {
 			}
 		case "list":
 		case "목록":
-
+			for(String friend : getManage().){}
 			break;
 		case "help":
 		case "도움말":

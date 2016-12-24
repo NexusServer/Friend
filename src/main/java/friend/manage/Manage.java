@@ -1,5 +1,7 @@
 package friend.manage;
 
+import java.util.List;
+
 import cn.nukkit.Player;
 import friend.DataBase;
 import friend.Main;
@@ -27,8 +29,17 @@ public class Manage {
 	public void onJoin(Player player) {
 		this.friend.onJoin(player);
 	}
-	public void delFriend(String player, String target){
+
+	public void delFriend(String player, String target) {
 		this.friend.delFriend(player, target);
+	}
+
+	public List<String> getFriends(Player player) {
+		return friend.getFriends(player);
+	}
+
+	public List<String> getFriends(String player) {
+		return friend.getFriends(player);
 	}
 
 	public boolean isFriend(String p1, String p2) {

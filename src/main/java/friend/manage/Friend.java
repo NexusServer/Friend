@@ -56,7 +56,7 @@ public class Friend {
 	}
 
 	public List<String> getFriends(Player player) {
-		return this.getFriends(player.getName().toLowerCase());
+		return this.getFriends(player.getName());
 	}
 
 	public void addFriend(Player player, Player target) {
