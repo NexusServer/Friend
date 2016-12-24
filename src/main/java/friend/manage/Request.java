@@ -45,11 +45,14 @@ public class Request {
 	}
 
 	public void requestFriend(String target, String player) {
-		getDataBase().RequestDB.put(target, player);
+		if (getManage().isFriend(target, player)) {
+
+		}
+		getDataBase().RequestDB.put(target.toLowerCase(), player.toLowerCase());
 	}
 
-	public void requestFriend(Player player, Player target) {
-
+	public void requestFriend(Player target, Player player) {
+		this.requestFriend(player.getName(), target.getName());
 	}
 
 	public void accept(String player, String target) {

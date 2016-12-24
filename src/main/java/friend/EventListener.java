@@ -52,7 +52,8 @@ public class EventListener implements Listener {
 		switch (args[0]) {
 		case "request":
 		case "신청":
-			
+			getManage().requestFriend(args[1], sender.getName());
+
 			break;
 		case "del":
 		case "삭제":
@@ -80,7 +81,7 @@ public class EventListener implements Listener {
 		case "help":
 		case "도움말":
 			sender.sendMessage(this.getMaunal());
-			break;
+			return true;
 		}
 
 		return false;

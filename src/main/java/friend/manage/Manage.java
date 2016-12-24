@@ -61,6 +61,9 @@ public class Manage {
 	public boolean isFirst(Player player) {
 		return this.friend.isFirst(player);
 	}
+	public void requestFriend(String target, String player){
+		this.request.requestFriend(target, player);
+	}
 
 	public List<String> getRequester(String player) {
 		return this.request.getRequester(player);
