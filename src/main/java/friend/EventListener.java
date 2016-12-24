@@ -5,6 +5,7 @@ import cn.nukkit.command.CommandSender;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerJoinEvent;
+import cn.nukkit.utils.TextFormat;
 import friend.manage.Manage;
 
 public class EventListener implements Listener {
@@ -51,17 +52,23 @@ public class EventListener implements Listener {
 		switch (args[0]) {
 		case "request":
 		case "신청":
-			
+
 			break;
 		case "del":
 		case "삭제":
+			if (args[1].equals("") || args[1] == null) {
+				sender.sendMessage(this.getMaunal());
+				return true;
 
+			}
 			if (getManage().isFriend(sender.getName(), args[1])) {
 				getManage().delFriend(sender.getName(), args[1]);
+				sender.sendMessage(TextFormat.colorize(args[1] + "님이 친구목록에서 삭제되었습니다"));
+				return true;
+			} else {
+				sender.sendMessage(args[1] + "님과 친구가 아닙니다");
 				return true;
 			}
-
-			break;
 		case "list":
 		case "목록":
 
