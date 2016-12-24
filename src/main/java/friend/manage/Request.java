@@ -1,14 +1,11 @@
 package friend.manage;
 
-import friend.DataBase;
-import friend.Main;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import friend.DataBase;
+import friend.Main;
 
 public class Request {
 
@@ -45,4 +42,7 @@ public class Request {
 		return step.getOrDefault(plugin.getServer().getPlayer(player), NO_DATA);
 	}
 
+	public void accept(String player, String target) {
+		plugin.getManage().add
+	}
 }

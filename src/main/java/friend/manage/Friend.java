@@ -31,6 +31,8 @@ public class Friend {
 		return !getDataBase().FriendDB.containsKey(player);
 	}
 
+	
+
 	public void delFriend(String player, String target) {
 		getFriends(player).remove(target);
 		getFriends(target).remove(player);
@@ -59,6 +61,11 @@ public class Friend {
 		return this.getFriends(player.getName());
 	}
 
+	public void addFriend(String player, String target) {
+		getFriends(player).add(target.toLowerCase());
+		getFriends(target).add(player.toLowerCase());
+		return;
+	}
 	public void addFriend(Player player, Player target) {
 		List<String> list = getFriends(player);
 		list.add(target.getName().toLowerCase());
