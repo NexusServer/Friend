@@ -54,12 +54,17 @@ public class EventListener implements Listener {
 			break;
 		case "del":
 		case "삭제":
+			if (getManage().isFriend(sender.getName(), args[1])) {
+				getManage()
+			}
 			break;
 
 		case "list":
 		case "목록":
 			break;
-
+		case "help":
+		case "도움말":
+			break;
 		}
 
 		return false;
