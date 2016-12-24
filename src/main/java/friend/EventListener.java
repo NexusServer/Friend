@@ -70,8 +70,13 @@ public class EventListener implements Listener {
 			}
 		case "list":
 		case "목록":
-			for(String friend : getManage().){}
-			break;
+			sender.sendMessage(getManage().getFriends(sender.getName()).stream()
+					.reduce((fir, sen) -> "§f" + fir + "    §8" + sen + "\n").get());
+			sender.sendMessage("친구신청목록==========");
+			sender.sendMessage(getManage().getRequester(sender.getName()).stream()
+					.reduce((fir, sen) -> "§f" + fir + "    §8" + sen + "\n").get());
+			return true;
+
 		case "help":
 		case "도움말":
 			sender.sendMessage(this.getMaunal());

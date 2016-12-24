@@ -30,6 +30,14 @@ public class Manage {
 		this.friend.onJoin(player);
 	}
 
+	public void addFriend(String player, String target) {
+		this.friend.addFriend(player, target);
+	}
+
+	public void addFriend(Player player, Player target) {
+		this.friend.addFriend(player, target);
+	}
+
 	public void delFriend(String player, String target) {
 		this.friend.delFriend(player, target);
 	}
@@ -52,6 +60,10 @@ public class Manage {
 
 	public boolean isFirst(Player player) {
 		return this.friend.isFirst(player);
+	}
+
+	public List<String> getRequester(String player) {
+		return this.request.getRequester(player);
 	}
 
 }

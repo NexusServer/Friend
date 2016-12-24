@@ -3,7 +3,9 @@ package friend.manage;
 import java.util.HashMap;
 import java.util.List;
 
+import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
+
 import friend.DataBase;
 import friend.Main;
 
@@ -42,7 +44,20 @@ public class Request {
 		return step.getOrDefault(plugin.getServer().getPlayer(player), NO_DATA);
 	}
 
-	public void accept(String player, String target) {
-		plugin.getManage().add
+	public void requestFriend(String target, String player) {
+		getDataBase().RequestDB.put(target, player);
 	}
+
+	public void requestFriend(Player player, Player target) {
+
+	}
+
+	public void accept(String player, String target) {
+		plugin.getManage().addFriend(player, target);
+	}
+
+	public void accept(Player player, Player target) {
+		plugin.getManage().addFriend(player, target);
+	}
+
 }
