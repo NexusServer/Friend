@@ -8,7 +8,6 @@ import friend.Main;
 
 public class Manage {
 
-	private Request request;
 	private Friend friend;
 
 	private Main plugin;
@@ -17,7 +16,6 @@ public class Manage {
 
 		this.plugin = plugin;
 
-		this.request = new Request(plugin);
 		this.friend = new Friend(plugin);
 
 	}
@@ -70,21 +68,5 @@ public class Manage {
 		return friend.friendExist(player);
 	}
 
-	
-	public boolean requestExist(Player player) {
-		return request.requestExist(player);
-	}
-
-	public boolean requestExist(String player) {
-		return request.requestExist(player);
-	}
-
-	public void requestFriend(String target, String player) {
-		this.request.requestFriend(target, player);
-	}
-
-	public List<String> getRequester(String player) {
-		return this.request.getRequester(player);
-	}
 
 }

@@ -11,7 +11,6 @@ public class DataBase {
 
 	public Main plugin;
 	public LinkedHashMap<String, Object> FriendDB;
-	public LinkedHashMap<String, Object> RequestDB;
 
 	public DataBase(Main plugin) {
 		this.plugin = plugin;
@@ -24,8 +23,6 @@ public class DataBase {
 	public void initDB() {
 		FriendDB = (LinkedHashMap<String, Object>) new Config(new File(plugin.getDataFolder(), "Friend.json"),
 				Config.JSON).getAll();
-		RequestDB = (LinkedHashMap<String, Object>) new Config(new File(plugin.getDataFolder(), "Request.json"),
-				Config.JSON).getAll();
 
 	}
 
@@ -33,9 +30,7 @@ public class DataBase {
 		Config FriendDB = new Config(new File(plugin.getDataFolder(), "Friend.json"), Config.JSON);
 		FriendDB.setAll(this.FriendDB);
 		FriendDB.save();
-		Config RequestDB = new Config(new File(plugin.getDataFolder(), "Request.json"), Config.JSON);
-		RequestDB.setAll(this.RequestDB);
-		RequestDB.save();
+		
 	}
 
 	public void registerCommands() {
