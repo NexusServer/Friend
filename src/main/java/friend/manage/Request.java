@@ -36,6 +36,14 @@ public class Request {
 		return plugin.getManage();
 	}
 
+	public boolean requestExist(Player player) {
+		return this.requestExist(player.getName());
+	}
+
+	public boolean requestExist(String player) {
+		return getDataBase().RequestDB.containsKey(player.toLowerCase());
+	}
+
 	public List<String> getRequester(String player) {
 		return (List<String>) getDataBase().RequestDB.getOrDefault(player.toLowerCase(), null);
 	}

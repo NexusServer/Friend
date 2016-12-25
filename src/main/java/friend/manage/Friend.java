@@ -27,11 +27,11 @@ public class Friend {
 		return plugin.getManage();
 	}
 
-	public boolean exist(Player player) {
-		return this.exist(player.getName());
+	public boolean friendExist(Player player) {
+		return this.friendExist(player.getName());
 	}
 
-	public boolean exist(String player) {
+	public boolean friendExist(String player) {
 		return !getDataBase().FriendDB.containsKey(player.toLowerCase());
 	}
 

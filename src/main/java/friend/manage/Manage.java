@@ -62,8 +62,20 @@ public class Manage {
 		return this.friend.isFriend(p1, p2);
 	}
 
-	public boolean exist(Player player) {
-		return this.friend.exist(player);
+	public boolean friendExist(Player player) {
+		return friend.friendExist(player);
+	}
+
+	public boolean friendExist(String player) {
+		return friend.friendExist(player);
+	}
+
+	public boolean requestExist(Player player) {
+		return request.requestExist(player);
+	}
+
+	public boolean requestExist(String player) {
+		return request.requestExist(player);
 	}
 
 	public void requestFriend(String target, String player) {
