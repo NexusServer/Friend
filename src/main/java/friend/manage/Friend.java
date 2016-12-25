@@ -1,11 +1,12 @@
 package friend.manage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.nukkit.Player;
 import cn.nukkit.entity.Entity;
-import cn.nukkit.entity.data.EntityMetadata;
 import cn.nukkit.utils.TextFormat;
 import friend.DataBase;
 import friend.Main;
@@ -13,9 +14,11 @@ import friend.Main;
 public class Friend {
 
 	private Main plugin;
+	private Map<Player, Player> requestWarp;
 
 	public Friend(Main plugin) {
 		this.plugin = plugin;
+		this.requestWarp = new HashMap<>();
 
 	}
 
@@ -92,6 +95,18 @@ public class Friend {
 		} catch (Exception e) {
 			return;
 		}
+	}
+
+	public boolean isRequester(Player player) {
+		return requestWarp.containsKey(player);
+	}
+
+	public void warpRequest(Player player, String target) {
+		this.requestWarp.put(player, plugin.getServer().getPlayer(target));
+	}
+
+	public void accept(Player player) {
+		this.requestWarp.get(player).teleport(player);
 	}
 
 }
