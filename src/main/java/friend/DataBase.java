@@ -17,6 +17,7 @@ public class DataBase {
 		this.plugin = plugin;
 		plugin.getDataFolder().mkdirs();
 		this.initDB();
+		this.registerCommands();
 
 	}
 
@@ -38,7 +39,7 @@ public class DataBase {
 	}
 
 	public void registerCommands() {
-
+		this.registerCommand("친구", "친구관리", "관리 친구", "true");
 	}
 
 	public void registerCommand(String name, String description, String usage, String permission) {

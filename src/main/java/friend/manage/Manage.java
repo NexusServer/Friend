@@ -26,8 +26,12 @@ public class Manage {
 		return this.plugin.getDataBase();
 	}
 
-	public void onJoin(Player player) {
-		this.friend.onJoin(player);
+	public void joinPlayer(Player player) {
+		this.friend.joinPlayer(player);
+	}
+
+	public void register(Player player) {
+		this.friend.register(player);
 	}
 
 	public void addFriend(String player, String target) {
@@ -58,10 +62,11 @@ public class Manage {
 		return this.friend.isFriend(p1, p2);
 	}
 
-	public boolean isFirst(Player player) {
-		return this.friend.isFirst(player);
+	public boolean exist(Player player) {
+		return this.friend.exist(player);
 	}
-	public void requestFriend(String target, String player){
+
+	public void requestFriend(String target, String player) {
 		this.request.requestFriend(target, player);
 	}
 

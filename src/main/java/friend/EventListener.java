@@ -30,11 +30,12 @@ public class EventListener implements Listener {
 
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
-		if (getManage().isFirst(event.getPlayer())) {
-			event.getPlayer().sendMessage("친구 데이터가 존재하지 않습니다... 데이터를 불러올 수 없습니다");
+		if (getManage().exist(event.getPlayer())) {
+			getManage().register(event.getPlayer());
+			event.getPlayer().sendMessage("친구 데이터가 존재하지 않습니다... 새로운 데이터를 생성합니다");
 
 		} else {
-			getManage().onJoin(event.getPlayer());
+			getManage().joinPlayer(event.getPlayer());
 		}
 	}
 
@@ -52,6 +53,7 @@ public class EventListener implements Listener {
 		switch (args[0]) {
 		case "request":
 		case "신청":
+
 			getManage().requestFriend(args[1], sender.getName());
 
 			break;

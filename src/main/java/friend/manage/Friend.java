@@ -27,34 +27,28 @@ public class Friend {
 		return plugin.getManage();
 	}
 
-	public boolean isFirst(Player player) {
-		return !getDataBase().FriendDB.containsKey(player);
+	public boolean exist(Player player) {
+		return this.exist(player.getName());
 	}
 
-	
+	public boolean exist(String player) {
+		return !getDataBase().FriendDB.containsKey(player.toLowerCase());
+	}
+
+	public void register(Player player) {
+		getDataBase().FriendDB.put(player.getName().toLowerCase(), new ArrayList<String>());
+	}
 
 	public void delFriend(String player, String target) {
 		getFriends(player).remove(target);
 		getFriends(target).remove(player);
 	}
 
-	public void onJoin(Player player) {
-
-		player.sendData((Player[]) getFriends(player).toArray(),
-				player.getDataProperties().putString(Entity.DATA_NAMETAG, TextFormat.GREEN + player.getName()));
-		try {
-			plugin.getServer().getOnlinePlayers().values().stream().filter(p -> getFriends(player).contains(p))
-					.forEach((Player p) -> {
-						p.sendData(player, player.getDataProperties().putString(Entity.DATA_NAMETAG,
-								TextFormat.GREEN + player.getName()));
-					});
-		} catch (Exception e) {
-			return;
-		}
-	}
-
+	@SuppressWarnings("unchecked")
 	public List<String> getFriends(String player) {
-		return (ArrayList<String>) this.getDataBase().FriendDB.get(player.toLowerCase());
+		ArrayList<String> list = new ArrayList<>();
+		list.addAll((List<String>) getDataBase().FriendDB.get(player.toLowerCase()));
+		return list;
 	}
 
 	public List<String> getFriends(Player player) {
@@ -66,6 +60,7 @@ public class Friend {
 		getFriends(target).add(player.toLowerCase());
 		return;
 	}
+
 	public void addFriend(Player player, Player target) {
 		List<String> list = getFriends(player);
 		list.add(target.getName().toLowerCase());
@@ -82,6 +77,21 @@ public class Friend {
 
 	public boolean isFriend(Player p1, Player p2) {
 		return this.isFriend(p1.getName().toLowerCase(), p2.getName().toLowerCase());
+	}
+
+	public void joinPlayer(Player player) {
+
+		player.sendData((Player[]) getFriends(player).toArray(),
+				player.getDataProperties().putString(Entity.DATA_NAMETAG, TextFormat.GREEN + player.getName()));
+		try {
+			plugin.getServer().getOnlinePlayers().values().stream().filter(p -> getFriends(player).contains(p))
+					.forEach((Player p) -> {
+						p.sendData(player, player.getDataProperties().putString(Entity.DATA_NAMETAG,
+								TextFormat.GREEN + player.getName()));
+					});
+		} catch (Exception e) {
+			return;
+		}
 	}
 
 }
