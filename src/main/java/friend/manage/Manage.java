@@ -70,6 +70,7 @@ public class Manage {
 		return friend.friendExist(player);
 	}
 
+	
 	public boolean requestExist(Player player) {
 		return request.requestExist(player);
 	}

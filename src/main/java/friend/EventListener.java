@@ -30,7 +30,7 @@ public class EventListener implements Listener {
 
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
-		if (getManage().exist(event.getPlayer())) {
+		if (getManage().friendExist(event.getPlayer())) {
 			getManage().register(event.getPlayer());
 			event.getPlayer().sendMessage("친구 데이터가 존재하지 않습니다... 새로운 데이터를 생성합니다");
 
@@ -53,7 +53,10 @@ public class EventListener implements Listener {
 		switch (args[0]) {
 		case "request":
 		case "신청":
-
+			if (getManage().friendExist(args[1])) {
+				sender.sendMessage("해당 플레이어는 친구데이터에 존재하지않습니다");
+				return true;
+			}else if(){}
 			getManage().requestFriend(args[1], sender.getName());
 
 			break;
