@@ -97,16 +97,25 @@ public class Friend {
 		}
 	}
 
-	public boolean isRequester(Player player) {
+	public Player getRequester(Player target) {
+		return this.requestWarp.get(target);
+	}
+
+	public boolean isTarget(Player player) {
 		return requestWarp.containsKey(player);
 	}
 
 	public void warpRequest(Player player, String target) {
-		this.requestWarp.put(player, plugin.getServer().getPlayer(target));
+		this.requestWarp.put(plugin.getServer().getPlayer(target), player);
 	}
 
 	public void accept(Player player) {
+
 		this.requestWarp.get(player).teleport(player);
+	}
+
+	public void refuse(Player player) {
+		this.requestWarp.remove(player);
 	}
 
 }

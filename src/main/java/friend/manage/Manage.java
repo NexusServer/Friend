@@ -68,14 +68,27 @@ public class Manage {
 		return friend.friendExist(player);
 	}
 
-	public boolean isRequester(Player player) {
-		return friend.isRequester(player);
+	
+	
+	
+	
+	public Player getRequester(Player target) {
+		return friend.getRequester(target);
+	}
+
+	public boolean isTarget(Player player) {
+		return friend.isTarget(player);
 	}
 
 	public void warpRequest(Player player, String target) {
 		friend.warpRequest(player, target);
 	}
-	public void accept(Player player){
+
+	public void accept(Player player) {
 		friend.accept(player);
+	}
+	
+	public void refuse(Player player){
+		friend.refuse(player);
 	}
 }

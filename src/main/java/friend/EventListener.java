@@ -1,5 +1,6 @@
 package friend;
 
+import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.event.EventHandler;
@@ -12,7 +13,7 @@ import friend.manage.Manage;
 public class EventListener implements Listener {
 
 	private Main plugin;
-	
+
 	public EventListener(Main plugin) {
 		this.plugin = plugin;
 	}
@@ -48,9 +49,10 @@ public class EventListener implements Listener {
 
 				break;
 			case "관리":
-				
+
 				break;
 			case "워프요청":
+				getManage().warpRequest((Player) sender, args[1]);
 			}
 
 		}
@@ -58,10 +60,15 @@ public class EventListener implements Listener {
 		return false;
 
 	}
+
 	@EventHandler
-	public void onWarpRequest(PlayerChatEvent event){
-		if () {
-			
+	public void onWarpRequest(PlayerChatEvent event) {
+		if (getManage().isTarget(event.getPlayer())) {
+			if (event.getMessage().equals("수락")) {
+				getManage().accept(event.getPlayer());
+			} else {
+				getManage().refuse(event.getPlayer());
+			}
 		}
 	}
 
