@@ -44,10 +44,16 @@ public class EventListener implements Listener {
 					sender.sendMessage("추가할 대상을 입력하여 주십시요");
 					return true;
 				}
-				if (getManage().isFriend(sender.getName(), args[1])) {
-					
+				if (getManage().friendExist(sender.getName())) {
+					getManage().register((Player) sender);
+
 				}
-				break;
+				if (getManage().isFriend(sender.getName(), args[1])) {
+					sender.sendMessage("이미 친구인 사람입니다");
+					return true;
+				}
+				getManage().addFriend(sender.getName(), args[1]);
+				return true;
 
 			case "삭제":
 				break;

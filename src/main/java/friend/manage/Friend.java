@@ -59,7 +59,7 @@ public class Friend {
 	}
 
 	public void addFriend(String player, String target) {
-		getFriends(player).add(target.toLowerCase());
+		getFriends(player.toLowerCase()).add(target.toLowerCase());
 		return;
 	}
 
@@ -67,10 +67,6 @@ public class Friend {
 		List<String> list = getFriends(player);
 		list.add(target.getName().toLowerCase());
 		getDataBase().FriendDB.put(player.getName().toLowerCase(), list);
-
-		List<String> list1 = getFriends(target);
-		list.add(player.getName().toLowerCase());
-		getDataBase().FriendDB.put(target.getName().toLowerCase(), list1);
 	}
 
 	public boolean isFriend(String p1, String p2) {
