@@ -44,7 +44,6 @@ public class Friend {
 
 	public void delFriend(String player, String target) {
 		getFriends(player).remove(target);
-		getFriends(target).remove(player);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -59,14 +58,14 @@ public class Friend {
 	}
 
 	public void addFriend(String player, String target) {
-		getFriends(player.toLowerCase()).add(target.toLowerCase());
+		List<String> list = getFriends(player);
+		list.add(target.toLowerCase());
+		getDataBase().FriendDB.put(player.toLowerCase(), list);
 		return;
 	}
 
 	public void addFriend(Player player, Player target) {
-		List<String> list = getFriends(player);
-		list.add(target.getName().toLowerCase());
-		getDataBase().FriendDB.put(player.getName().toLowerCase(), list);
+		this.addFriend(player.getName(), target.getName());
 	}
 
 	public boolean isFriend(String p1, String p2) {
