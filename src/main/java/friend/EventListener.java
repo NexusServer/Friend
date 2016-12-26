@@ -53,6 +53,7 @@ public class EventListener implements Listener {
 					return true;
 				}
 				getManage().addFriend(sender.getName(), args[1]);
+				sender.sendMessage(args[1] + "님을 성공적으로 친구등록하였습니다");
 				return true;
 
 			case "삭제":
@@ -96,6 +97,9 @@ public class EventListener implements Listener {
 	public void onWarpRequest(PlayerChatEvent event) {
 		if (getManage().isTarget(event.getPlayer())) {
 			if (event.getMessage().equals("수락")) {
+
+				event.getPlayer().sendMessage(
+						getManage().getRequester(event.getPlayer()).getName() + "님의 워프요청을 수락하셨습니다... 워프가 완료되었습니다");
 				getManage().accept(event.getPlayer());
 			} else {
 				getManage().refuse(event.getPlayer());
