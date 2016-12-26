@@ -56,7 +56,7 @@ public class Manage {
 		return this.friend.isFriend(p1, p2);
 	}
 
-	public boolean isFreind(Player p1, Player p2) {
+	public boolean isFriend(Player p1, Player p2) {
 		return this.friend.isFriend(p1, p2);
 	}
 
@@ -68,10 +68,6 @@ public class Manage {
 		return friend.friendExist(player);
 	}
 
-	
-	
-	
-	
 	public Player getRequester(Player target) {
 		return friend.getRequester(target);
 	}
@@ -87,8 +83,8 @@ public class Manage {
 	public void accept(Player player) {
 		friend.accept(player);
 	}
-	
-	public void refuse(Player player){
+
+	public void refuse(Player player) {
 		friend.refuse(player);
 	}
 }

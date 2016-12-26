@@ -40,7 +40,13 @@ public class EventListener implements Listener {
 
 			switch (args[0]) {
 			case "추가":
-
+				if (args.length < 2) {
+					sender.sendMessage("추가할 대상을 입력하여 주십시요");
+					return true;
+				}
+				if (getManage().isFriend(sender.getName(), args[1])) {
+					
+				}
 				break;
 
 			case "삭제":
@@ -52,7 +58,26 @@ public class EventListener implements Listener {
 
 				break;
 			case "워프요청":
-				getManage().warpRequest((Player) sender, args[1]);
+				if (args.length < 2) {
+					sender.sendMessage("요청할 상대를 입력해주십시요");
+					return true;
+				}
+				if (getManage().isFriend(sender.getName(), args[1])
+						&& getManage().isFriend(args[1], sender.getName())) {
+
+					if (plugin.getServer().getPlayer(args[1]).isOnline()) {
+						getManage().warpRequest((Player) sender, args[1]);
+						plugin.getServer().getPlayer(args[1])
+								.sendMessage(sender.getName() + "님이 워프를 요청하였습니다 수락하시려면 채팅창에 \"수락\"을, 그렇지 않으면 ");
+					} else {
+						sender.sendMessage("대상이 오프라인입니다");
+						return true;
+					}
+				} else {
+					sender.sendMessage("워프요청은 서로 친구여야만 가능합니다");
+					return true;
+				}
+
 			}
 
 		}

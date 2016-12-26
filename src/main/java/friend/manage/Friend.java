@@ -60,7 +60,6 @@ public class Friend {
 
 	public void addFriend(String player, String target) {
 		getFriends(player).add(target.toLowerCase());
-		getFriends(target).add(player.toLowerCase());
 		return;
 	}
 
