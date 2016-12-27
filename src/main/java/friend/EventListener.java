@@ -57,9 +57,11 @@ public class EventListener implements Listener {
 				return true;
 
 			case "삭제":
+				
+				
 				break;
 			case "목록":
-
+				
 				break;
 			case "관리":
 
@@ -92,6 +94,16 @@ public class EventListener implements Listener {
 		return false;
 
 	}
+	public void printFriendList(Player player){
+		return;F
+	}
+
+	@EventHandler
+	public void onJoin(PlayerJoinEvent event) {
+		if (getManage().friendExist(event.getPlayer())) {
+			getManage().joinPlayer(event.getPlayer());
+		}
+	}
 
 	@EventHandler
 	public void onWarpRequest(PlayerChatEvent event) {
@@ -105,6 +117,14 @@ public class EventListener implements Listener {
 				getManage().refuse(event.getPlayer());
 			}
 		}
+	}
+
+	public static String getPlayerName(String player) {
+		StringBuilder str = new StringBuilder(16);
+		str.append("                ");
+		str.replace(0, player.length(), player);
+
+		return str.toString();
 	}
 
 	private String getMaunal() {

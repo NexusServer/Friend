@@ -78,18 +78,43 @@ public class Friend {
 
 	public void joinPlayer(Player player) {
 
-		player.sendData((Player[]) getFriends(player).toArray(),
-				player.getDataProperties().putString(Entity.DATA_NAMETAG, TextFormat.GREEN + player.getName()));
-		try {
-			plugin.getServer().getOnlinePlayers().values().stream().filter(p -> getFriends(player).contains(p))
-					.forEach((Player p) -> {
-						p.sendData(player, player.getDataProperties().putString(Entity.DATA_NAMETAG,
-								TextFormat.GREEN + player.getName()));
-					});
-		} catch (Exception e) {
-			return;
+		List<Player> online = (List<Player>) plugin.getServer().getOnlinePlayers().values();
+		for (Player p : online) {
+			// 서로친구
+			try {
+				if (isFriend(player, p) && isFriend(p, player)) {
+					player.sendData(p, p.getDataProperties().putString(Entity.DATA_NAMETAG, "§d" + p.getName()));
+					p.sendData(player,
+							player.getDataProperties().putString(Entity.DATA_NAMETAG, "§d" + player.getName()));
+					break;
+				}
+
+				if (isFriend(p, player)) {
+					p.sendData(player,
+							player.getDataProperties().putString(Entity.DATA_NAMETAG, "§a" + player.getName()));
+					break;
+				}
+				if (isFriend(player, p)) {
+					player.sendData(p, p.getDataProperties().putString(Entity.DATA_NAMETAG, "§a" + p.getName()));
+					break;
+				}
+			} catch (Exception e) {
+				break;
+			}
+
 		}
 	}
+	/*
+	 * player.sendData((Player[]) getFriends(player).toArray(),
+	 * player.getDataProperties().putString(Entity.DATA_NAMETAG,
+	 * TextFormat.GREEN + player.getName())); try {
+	 * plugin.getServer().getOnlinePlayers().values().stream().filter(p ->
+	 * getFriends(player).contains(p)) .forEach((Player p) -> {
+	 * p.sendData(player,
+	 * player.getDataProperties().putString(Entity.DATA_NAMETAG,
+	 * TextFormat.GREEN + player.getName())); }); } catch (Exception e) {
+	 * return; }
+	 */
 
 	public Player getRequester(Player target) {
 		return this.requestWarp.get(target);
