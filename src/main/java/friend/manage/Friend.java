@@ -35,7 +35,7 @@ public class Friend {
 	}
 
 	public boolean friendExist(String player) {
-		return !getDataBase().FriendDB.containsKey(player.toLowerCase());
+		return getDataBase().FriendDB.containsKey(player.toLowerCase());
 	}
 
 	public void register(Player player) {
@@ -73,13 +73,12 @@ public class Friend {
 	}
 
 	public boolean isFriend(Player p1, Player p2) {
-		return this.isFriend(p1.getName().toLowerCase(), p2.getName().toLowerCase());
+		return this.isFriend(p1.getName(), p2.getName());
 	}
 
 	public void joinPlayer(Player player) {
 
-		List<Player> online = (List<Player>) plugin.getServer().getOnlinePlayers().values();
-		for (Player p : online) {
+		for (Player p : plugin.getServer().getOnlinePlayers().values()) {
 			// 서로친구
 			try {
 				if (isFriend(player, p) && isFriend(p, player)) {

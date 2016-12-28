@@ -57,11 +57,10 @@ public class EventListener implements Listener {
 				return true;
 
 			case "삭제":
-				
-				
+
 				break;
 			case "목록":
-				
+
 				break;
 			case "관리":
 
@@ -94,8 +93,9 @@ public class EventListener implements Listener {
 		return false;
 
 	}
-	public void printFriendList(Player player){
-		return;F
+
+	public void printFriendList(Player player) {
+		return;
 	}
 
 	@EventHandler
