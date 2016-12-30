@@ -45,7 +45,7 @@ public class EventListener implements Listener {
 					sender.sendMessage("추가할 대상을 입력하여 주십시요");
 					return true;
 				}
-				if (getManage().friendExist(sender.getName())) {
+				if (!getManage().friendExist(sender.getName())) {
 					getManage().register((Player) sender);
 
 				}
@@ -61,7 +61,15 @@ public class EventListener implements Listener {
 
 				break;
 			case "목록":
-
+				if (getManage().friendExist(sender.getName())) {
+					getManage().getFriends(sender.getName()).forEach((String name) -> {
+						sender.sendMessage(getPlayerName(sender.getName()) + "|" + "\n");
+					});
+					return true;
+				} else {
+					sender.sendMessage("당신은 친구가 존재하지 않습니다");
+					return true;
+				}
 				break;
 			case "관리":
 
