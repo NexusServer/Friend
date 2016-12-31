@@ -1,5 +1,7 @@
 package friend;
 
+import java.util.List;
+
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
@@ -59,18 +61,32 @@ public class EventListener implements Listener {
 
 			case "삭제":
 
+				if (!getManage().friendExist(sender.getName())) {
+					sender.sendMessage("당신은 친구가 존재하지 않습니다");
+					return true;
+				}
 				break;
 			case "목록":
 				if (getManage().friendExist(sender.getName())) {
-					getManage().getFriends(sender.getName()).forEach((String name) -> {
-						sender.sendMessage(getPlayerName(sender.getName()) + "|" + "\n");
-					});
+					StringBuilder str = new StringBuilder();
+					for (int i = 1; i <= getManage().getFriends(sender.getName()).size(); ++i) {
+						if (i % 2 != 0) {
+							str.append(getOnlineSimbol(getManage().getFriends(sender.getName()).get(i - 1)) + "§f"
+									+ getPlayerName(getManage().getFriends(sender.getName()).get(i - 1)) + "|");
+
+						} else {
+							str.append(getOnlineSimbol(getManage().getFriends(sender.getName()).get(i - 1)) + "§f"
+									+ getManage().getFriends(sender.getName()).get(i - 1) + "\n");
+
+						}
+					}
+					sender.sendMessage(str.toString());
 					return true;
 				} else {
 					sender.sendMessage("당신은 친구가 존재하지 않습니다");
 					return true;
 				}
-				break;
+
 			case "관리":
 
 				break;
@@ -126,6 +142,13 @@ public class EventListener implements Listener {
 				getManage().refuse(event.getPlayer());
 			}
 		}
+	}
+
+	public String getOnlineSimbol(String name) {
+		if (plugin.getServer().getPlayerExact(name) == null) {
+			return "§7●";
+		}
+		return "§a●";
 	}
 
 	public static String getPlayerName(String player) {
