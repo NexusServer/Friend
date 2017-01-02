@@ -1,4 +1,4 @@
-package friend;
+ package friend;
 
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;

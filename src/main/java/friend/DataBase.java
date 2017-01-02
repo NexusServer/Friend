@@ -28,7 +28,7 @@ public class DataBase {
 
 	public void save() {
 		Config FriendDB = new Config(new File(plugin.getDataFolder(), "Friend.json"), Config.JSON);
-		FriendDB.setAll(this.FriendDB);
+		FriendDB.setAll((LinkedHashMap<String, Object>)this.FriendDB);
 		FriendDB.save();
 		
 	}

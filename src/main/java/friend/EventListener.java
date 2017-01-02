@@ -65,7 +65,16 @@ public class EventListener implements Listener {
 					sender.sendMessage("당신은 친구가 존재하지 않습니다");
 					return true;
 				}
-				break;
+				if (args.length < 2) {
+					sender.sendMessage("제거할 대상을 입력하여 주십시요");
+					return true;
+				}
+				if (!getManage().isFriend(sender.getName(), args[1])) {
+					sender.sendMessage("상대방과 친구가 아닙니다");
+					return true;
+				}
+				getManage().delFriend(sender.getName(), args[1]);
+				return true;
 			case "목록":
 				if (getManage().friendExist(sender.getName())) {
 					StringBuilder str = new StringBuilder();
@@ -117,10 +126,6 @@ public class EventListener implements Listener {
 
 		return false;
 
-	}
-
-	public void printFriendList(Player player) {
-		return;
 	}
 
 	@EventHandler
