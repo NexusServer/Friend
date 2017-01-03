@@ -87,4 +87,8 @@ public class Manage {
 	public void refuse(Player player) {
 		friend.refuse(player);
 	}
+
+	public String getOnlineSimbol(String name) {
+		return friend.getOnlineSimbol(name);
+	}
 }

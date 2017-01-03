@@ -149,12 +149,7 @@ public class EventListener implements Listener {
 		}
 	}
 
-	public String getOnlineSimbol(String name) {
-		if (plugin.getServer().getPlayerExact(name) == null) {
-			return "§7●";
-		}
-		return "§a●";
-	}
+	
 
 	public static String getPlayerName(String player) {
 		StringBuilder str = new StringBuilder(16);

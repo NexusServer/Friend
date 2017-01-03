@@ -43,7 +43,10 @@ public class Friend {
 	}
 
 	public void delFriend(String player, String target) {
-		getFriends(player).remove(target);
+		List<String> list = getFriends(player);
+		list.remove(target);
+		getDataBase().FriendDB.put(player, list);
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -77,31 +80,16 @@ public class Friend {
 	}
 
 	public void joinPlayer(Player player) {
-
 		for (Player p : plugin.getServer().getOnlinePlayers().values()) {
-			// 서로친구
-			try {
-				if (isFriend(player, p) && isFriend(p, player)) {
-					player.sendData(p, p.getDataProperties().putString(Entity.DATA_NAMETAG, "§d" + p.getName()));
-					p.sendData(player,
-							player.getDataProperties().putString(Entity.DATA_NAMETAG, "§d" + player.getName()));
-					break;
-				}
-
-				if (isFriend(p, player)) {
-					p.sendData(player,
-							player.getDataProperties().putString(Entity.DATA_NAMETAG, "§a" + player.getName()));
-					break;
-				}
-				if (isFriend(player, p)) {
-					player.sendData(p, p.getDataProperties().putString(Entity.DATA_NAMETAG, "§a" + p.getName()));
-					break;
-				}
-			} catch (Exception e) {
-				break;
-			}
-
+			p.sendData(player, player.getDataProperties().putString(Entity.DATA_NAMETAG, ""));
 		}
+
+	}
+	public String getOnlineSimbol(String name) {
+		if (plugin.getServer().getPlayerExact(name) == null) {
+			return "§7●";
+		}
+		return "§a●";
 	}
 	/*
 	 * player.sendData((Player[]) getFriends(player).toArray(),
